@@ -2,12 +2,12 @@
 #include<string.h>
 
 //统计字符数
-void CharCount()
+void CharCount(char* argv[])
 {
     FILE* fp;
     int charCount = 0;
     char ch;//读取文件返回的字节
-    if ((fp = fopen("test.txt", "r")) == NULL)
+    if ((fp = fopen(argv[2], "r")) == NULL)
     {
         printf("文件打开失败.");
     }
@@ -21,12 +21,12 @@ void CharCount()
     fclose(fp);
 }
 //统计单词数
-void WordCount()
+void WordCount(char* argv[])
 {
     FILE* fp;
     int wordCount = 0, flag = 0;
     char ch;//读取文件返回的字节
-    if ((fp = fopen("test.txt", "r")) == NULL)
+    if ((fp = fopen(argv[2], "r")) == NULL)
     {
         printf("文件打开失败.");
     }
@@ -55,14 +55,14 @@ void WordCount()
 int main(int argc, char* argv[])
 {
     //统计单词数
-    if ((strcmp(argv[1], "-w") == 0) && (strcmp(argv[2], "test.txt") == 0))
+    if (strcmp(argv[1], "-w") == 0)
     {
-        WordCount();
+        WordCount(argv);
     }
     //统计字符数
-    if ((strcmp(argv[1], "-c") == 0) && (strcmp(argv[2], "test.txt") == 0))
+    if (strcmp(argv[1], "-c") == 0)
     {
-        CharCount();
+        CharCount(argv);
     }
     return 0;
 }
